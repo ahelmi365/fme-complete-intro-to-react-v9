@@ -5,7 +5,7 @@ const Pizaa = (props) => {
     [
       React.createElement("h2", {}, props.name),
       React.createElement("p", {}, props.desc),
-    ],
+    ]
   );
 };
 
@@ -25,7 +25,7 @@ const App = () => {
         id: pizaa.id,
         name: pizaa.name,
         desc: pizaa.desc,
-      }),
+      })
     ),
   ]);
 };
