@@ -57,3 +57,8 @@ export default [
 ```
 
 - You can install this [ESLLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- Install Vite:
+
+```
+npm install -D vite@5.4.2 @vitejs/plugin-react@4.3.1
+```
