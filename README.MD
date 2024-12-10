@@ -13,6 +13,17 @@ npm install -D eslint@9.9.1 eslint-config-prettier@9.1.0 globals@15.9.0
 "format": "prettier --write \"src/**/*.{js,jsx,ts, tsx,scss,css,html}\""
 ```
 
+- Add `.gitignore` file:
+
+```
+.DS_Store
+node_modules/
+dist/.env
+coverage/
+.vscode/
+
+```
+
 - create a file called 'eslint.config.mjs' in the project root folder
 - Add the following in the 'eslint.config.mjs' file:
 
