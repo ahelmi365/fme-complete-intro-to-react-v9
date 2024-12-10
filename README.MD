@@ -56,6 +56,10 @@ export default [
 "lint": "eslint",
 ```
 
+```
+npm i -D eslint-plugin-react@7.37.1
+```
+
 - You can install this [ESLLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - Install Vite:
 
