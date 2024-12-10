@@ -1,25 +1,30 @@
 import { createRoot } from "react-dom/client";
-import Piza from "./Piza";
-
-const pizaas = [
-  { id: 1, name: "Piza-1", desc: "Piza-1-description" },
-  { id: 2, name: "Piza-2", desc: "Piza-2-description" },
-  { id: 3, name: "Piza-3", desc: "Piza-3-description" },
-  { id: 4, name: "Piza-4", desc: "Piza-4-description" },
-  { id: 5, name: "Piza-5", desc: "Piza-5-description" },
-];
+import Pizza from "./Pizza";
+import { useEffect, useState } from "react";
 
 const App = () => {
-  const renderedPizaas = pizaas.map((piza) => (
-    <Piza piza={piza} key={piza.id} />
+  const [pizzas, setPizzas] = useState([]);
+  const getPizzas = async () => {
+    const res = await fetch("/api/pizzas");
+    const data = await res.json();
+    console.log({ data });
+    setPizzas(data);
+  };
+
+  useEffect(() => {
+    getPizzas();
+  }, []);
+  const renderedPizaas = pizzas.map((piza) => (
+    <Pizza
+      id={piza.id}
+      name={piza.name}
+      description={piza.description}
+      image={piza.image}
+      key={piza.id}
+    />
   ));
 
-  return (
-    <div className="app-container">
-      <h1 className="heading">Hello React!</h1>
-      {renderedPizaas}
-    </div>
-  );
+  return <div className="app-container">{renderedPizaas}</div>;
 };
 
 const container = document.getElementById("root");
