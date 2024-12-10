@@ -1,4 +1,4 @@
-const Pizaa = (props) => {
+const Piza = (props) => {
   return React.createElement(
     "div",
     { class: "pizaa-container", id: props.id },
@@ -10,18 +10,19 @@ const Pizaa = (props) => {
 };
 
 const pizaas = [
-  { id: 1, name: "Pizaa-1", desc: "Pizaa-1-description" },
-  { id: 2, name: "Pizaa-2", desc: "Pizaa-2-description" },
-  { id: 3, name: "Pizaa-3", desc: "Pizaa-3-description" },
-  { id: 4, name: "Pizaa-4", desc: "Pizaa-4-description" },
-  { id: 5, name: "Pizaa-5", desc: "Pizaa-5-description" },
+  { id: 1, name: "Piza-1", desc: "Piza-1-description" },
+  { id: 2, name: "Piza-2", desc: "Piza-2-description" },
+  { id: 3, name: "Piza-3", desc: "Piza-3-description" },
+  { id: 4, name: "Piza-4", desc: "Piza-4-description" },
+  { id: 5, name: "Piza-5", desc: "Piza-5-description" },
 ];
 
 const App = () => {
   return React.createElement("div", { class: "app-conatiner" }, [
     React.createElement("h1", { clas: "heading" }, "Hello React!"),
     pizaas.map((pizaa) =>
-      React.createElement(Pizaa, {
+      React.createElement(Piza, {
+        key: pizaa.id,
         id: pizaa.id,
         name: pizaa.name,
         desc: pizaa.desc,
