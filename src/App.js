@@ -9,14 +9,24 @@ const Pizaa = (props) => {
   );
 };
 
+const pizaas = [
+  { id: 1, name: "Pizaa-1", desc: "Pizaa-1-description" },
+  { id: 2, name: "Pizaa-2", desc: "Pizaa-2-description" },
+  { id: 3, name: "Pizaa-3", desc: "Pizaa-3-description" },
+  { id: 4, name: "Pizaa-4", desc: "Pizaa-4-description" },
+  { id: 5, name: "Pizaa-5", desc: "Pizaa-5-description" },
+];
+
 const App = () => {
   return React.createElement("div", { class: "app-conatiner" }, [
-    React.createElement("h1", { clas: "header" }, "Hello React!"),
-    React.createElement(Pizaa, { id: "1", name:"Pizaa-1", desc:"Pizaa-1-desc" }),
-    React.createElement(Pizaa, { id: "2", name:"Pizaa-2", desc:"Pizaa-2-desc" }),
-    React.createElement(Pizaa, { id: "3", name:"Pizaa-3", desc:"Pizaa-3-desc" }),
-    React.createElement(Pizaa, { id: "4", name:"Pizaa-4", desc:"Pizaa-4-desc" }),
-    React.createElement(Pizaa, { id: "5", name:"Pizaa-5", desc:"Pizaa-5-desc" }),
+    React.createElement("h1", { clas: "heading" }, "Hello React!"),
+    pizaas.map((pizaa) =>
+      React.createElement(Pizaa, {
+        id: pizaa.id,
+        name: pizaa.name,
+        desc: pizaa.desc,
+      })
+    ),
   ]);
 };
 
