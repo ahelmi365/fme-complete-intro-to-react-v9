@@ -62,3 +62,28 @@ export default [
 ```
 npm install -D vite@5.4.2 @vitejs/plugin-react@4.3.1
 ```
+
+- Create vite.config.js
+- add this to vite config:
+
+```js
+import { defineConfig } from "vite";
+
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: [react()],
+});
+```
+
+-- install react and react-dom
+
+```
+npm install react@18.3.1 react-dom@18.3.1
+```
+
+- Maybe run:
+
+```
+npm audit fix
+```
