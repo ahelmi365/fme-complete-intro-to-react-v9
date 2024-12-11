@@ -1,9 +1,37 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import Pizza from "./Pizza";
 
+const intlNumber = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+});
+
 const Order = () => {
+  const [pizzaTypes, setPizzaTypes] = useState([]);
   const [pizzaType, setPizzaType] = useState("pepperoni");
   const [pizzaSize, setPizzaSize] = useState("M");
+  const [loading, setLoading] = useState(true);
+
+  let price, selectedPizza;
+
+  if (!loading) {
+    selectedPizza = pizzaTypes.find((pizza) => pizza.id === pizzaType);
+    price = intlNumber.format(selectedPizza.sizes[pizzaSize]);
+  }
+
+  const getPizzaTypes = async () => {
+    setLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const pizzaRes = await fetch("/api/pizzas");
+    const pizzaJson = await pizzaRes.json();
+    console.log({ pizzaJson });
+    setPizzaTypes(pizzaJson);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getPizzaTypes();
+  }, []);
   return (
     <div className="order">
       <h2>Create Order</h2>
@@ -17,9 +45,13 @@ const Order = () => {
               value={pizzaType}
               onChange={(e) => setPizzaType(e.target.value)}
             >
-              <option value="pepperoni">Pepparoni</option>
-              <option value="hawaiian">hawaiian</option>
-              <option value="big_meat">Big Meat</option>
+              <option value="-1">Select Pizza Type</option>
+
+              {pizzaTypes.map((pizzaType) => (
+                <option value={pizzaType.id} key={pizzaType.id}>
+                  {pizzaType.name}
+                </option>
+              ))}
             </select>
           </div>
           <div>
@@ -32,7 +64,7 @@ const Order = () => {
                   name="pizza-size"
                   checked={pizzaSize === "S"}
                   value={"S"}
-                  onClick={(e) => setPizzaSize(e.target.value)}
+                  onChange={(e) => setPizzaSize(e.target.value)}
                 />
                 <label htmlFor="pizza-s">Small</label>
               </span>
@@ -43,7 +75,7 @@ const Order = () => {
                   name="pizza-size"
                   checked={pizzaSize === "M"}
                   value={"M"}
-                  onClick={(e) => setPizzaSize(e.target.value)}
+                  onChange={(e) => setPizzaSize(e.target.value)}
                 />
                 <label htmlFor="pizza-m">Medium</label>
               </span>
@@ -54,7 +86,7 @@ const Order = () => {
                   name="pizza-size"
                   checked={pizzaSize === "L"}
                   value={"L"}
-                  onClick={(e) => setPizzaSize(e.target.value)}
+                  onChange={(e) => setPizzaSize(e.target.value)}
                 />
                 <label htmlFor="pizza-l">Large</label>
               </span>
@@ -65,11 +97,17 @@ const Order = () => {
           </div>
         </div>
         <div>
-          <Pizza
-            name="Pepproni"
-            description="Pepproni desc"
-            image={`/public/pizzas/${pizzaType}.webp`}
-          />
+          {loading && <span>Loading...</span>}
+          {!loading && (
+            <>
+              <Pizza
+                name={selectedPizza.name}
+                description={selectedPizza?.description}
+                image={selectedPizza.image}
+              />
+              <p>{price}</p>
+            </>
+          )}
         </div>
       </form>
     </div>
