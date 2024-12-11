@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import Pizza from "./Pizza";
 import { useEffect, useState } from "react";
+import Order from "./Order";
 
 const App = () => {
   const [pizzas, setPizzas] = useState([]);
@@ -24,7 +25,12 @@ const App = () => {
     />
   ));
 
-  return <div className="app-container">{renderedPizaas}</div>;
+  // return <div className="app-container">{renderedPizaas}</div>;
+  return (
+    <div className="app-container">
+      <Order />
+    </div>
+  );
 };
 
 const container = document.getElementById("root");
