@@ -1,7 +1,9 @@
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import Pizza from "./Pizza";
 import { useEffect, useState } from "react";
 import Order from "./Order";
+import PizzaOfTheDay from "./PizzaOfTheDay";
 
 const App = () => {
   const [pizzas, setPizzas] = useState([]);
@@ -27,9 +29,14 @@ const App = () => {
 
   // return <div className="app-container">{renderedPizaas}</div>;
   return (
-    <div className="app-container">
-      <Order />
-    </div>
+    <StrictMode>
+      <div className="app-container">
+        <h1 className="logo">Padre Gino's - Order Now</h1>
+        <Order />
+
+        <PizzaOfTheDay />
+      </div>
+    </StrictMode>
   );
 };
 
