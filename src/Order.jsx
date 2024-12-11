@@ -23,11 +23,28 @@ const Order = () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const pizzaRes = await fetch("/api/pizzas");
     const pizzaJson = await pizzaRes.json();
-    console.log({ pizzaJson });
     setPizzaTypes(pizzaJson);
     setLoading(false);
   };
 
+  const checkOut = async () => {
+    if (cart.length > 0) {
+      setLoading(true);
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      const res = await fetch("/api/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ cart }),
+      });
+      const data = await res.json();
+      setCart([]);
+
+      console.log(data);
+      setLoading(false);
+    }
+  };
   useEffect(() => {
     getPizzaTypes();
   }, []);
@@ -101,7 +118,9 @@ const Order = () => {
               </div>
             </div>
             <div>
-              <button type="submit">Add to cart</button>
+              <button type="submit" disabled={loading}>
+                Add to cart
+              </button>
             </div>
           </div>
           <div>
@@ -119,7 +138,7 @@ const Order = () => {
           </div>
         </form>
       </div>
-      {loading ? <h2>LOADING...</h2> : <Cart cart={cart} />}
+      {loading ? <h2>LOADING...</h2> : <Cart cart={cart} checkOut={checkOut} />}
     </div>
   );
 };

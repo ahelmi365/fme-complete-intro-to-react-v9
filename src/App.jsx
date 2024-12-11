@@ -10,7 +10,6 @@ const App = () => {
   const getPizzas = async () => {
     const res = await fetch("/api/pizzas");
     const data = await res.json();
-    console.log({ data });
     setPizzas(data);
   };
 
