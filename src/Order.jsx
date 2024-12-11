@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import Cart from "./Cart";
 import Pizza from "./Pizza";
+import useCurrencyINTL from "./useCurrencyINTL";
 
-const intlNumber = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
+const currencyINTL = useCurrencyINTL();
 
 const Order = () => {
   const [pizzaTypes, setPizzaTypes] = useState([]);
@@ -18,7 +16,7 @@ const Order = () => {
 
   if (!loading) {
     selectedPizza = pizzaTypes.find((pizza) => pizza.id === pizzaType);
-    price = intlNumber.format(selectedPizza.sizes[pizzaSize]);
+    price = currencyINTL.format(selectedPizza.sizes[pizzaSize]);
   }
 
   const getPizzaTypes = async () => {

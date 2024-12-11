@@ -1,5 +1,9 @@
 import React from "react";
 
+import useCurrencyINTL from "./useCurrencyINTL";
+
+const currencyINTL = useCurrencyINTL();
+
 const Cart = (props) => {
   console.log(props.cart);
   return (

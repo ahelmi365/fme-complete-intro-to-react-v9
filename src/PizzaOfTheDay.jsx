@@ -1,9 +1,7 @@
 import React from "react";
 import usePizzaOfTheDay from "./usePizzaOfTheDay";
-const intl = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
+import useCurrencyINTL from "./useCurrencyINTL";
+const currencyINTL = useCurrencyINTL();
 const PizzaOfTheDay = () => {
   const pizzaOfTheDay = usePizzaOfTheDay();
 
@@ -18,7 +16,7 @@ const PizzaOfTheDay = () => {
           <h3>{pizzaOfTheDay.name}</h3>
           <p>{pizzaOfTheDay.description}</p>
           <p className="pizza-of-the-day-info">
-            {intl.format(pizzaOfTheDay.sizes.S)}
+            {currencyINTL.format(pizzaOfTheDay.sizes.S)}
           </p>
         </div>
         <img
