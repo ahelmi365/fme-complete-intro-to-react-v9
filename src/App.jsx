@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import Order from "./Order";
 import PizzaOfTheDay from "./PizzaOfTheDay";
 
+import Header from "./Header";
+
 const App = () => {
   const [pizzas, setPizzas] = useState([]);
   const getPizzas = async () => {
@@ -30,9 +32,8 @@ const App = () => {
   return (
     <StrictMode>
       <div className="app-container">
-        <h1 className="logo">Padre Gino's - Order Now</h1>
+        <Header />
         <Order />
-
         <PizzaOfTheDay />
       </div>
     </StrictMode>
