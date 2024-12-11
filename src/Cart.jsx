@@ -2,9 +2,8 @@ import React from "react";
 
 import useCurrencyINTL from "./useCurrencyINTL";
 
-const currencyINTL = useCurrencyINTL();
-
 const Cart = (props) => {
+  const currencyINTL = useCurrencyINTL();
   console.log(props.cart);
   return (
     <div className="cart">

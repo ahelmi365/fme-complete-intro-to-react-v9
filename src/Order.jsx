@@ -3,9 +3,8 @@ import Cart from "./Cart";
 import Pizza from "./Pizza";
 import useCurrencyINTL from "./useCurrencyINTL";
 
-const currencyINTL = useCurrencyINTL();
-
 const Order = () => {
+  const currencyINTL = useCurrencyINTL();
   const [pizzaTypes, setPizzaTypes] = useState([]);
   const [cart, setCart] = useState([]);
   const [pizzaType, setPizzaType] = useState("pepperoni");

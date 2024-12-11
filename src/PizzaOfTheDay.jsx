@@ -1,8 +1,8 @@
 import React from "react";
 import usePizzaOfTheDay from "./usePizzaOfTheDay";
 import useCurrencyINTL from "./useCurrencyINTL";
-const currencyINTL = useCurrencyINTL();
 const PizzaOfTheDay = () => {
+  const currencyINTL = useCurrencyINTL();
   const pizzaOfTheDay = usePizzaOfTheDay();
 
   if (!pizzaOfTheDay) {
