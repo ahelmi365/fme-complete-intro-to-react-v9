@@ -106,3 +106,13 @@ npm install react@18.3.1 react-dom@18.3.1
 ```
 npm audit fix
 ```
+
+- Install TanStack Router
+
+```
+npm install @tanstack/react-router@1.65.0
+```
+
+```
+npm install -D @tanstack/router-plugin@1.65.0 @tanstack/router-devtools@1.65.0
+```
