@@ -4,7 +4,7 @@ import { StrictMode } from "react";
 
 import { routeTree } from "./routeTree.gen";
 
-const router = createRouter(routeTree);
+const router = createRouter({ routeTree });
 const App = () => {
   return (
     <StrictMode>
