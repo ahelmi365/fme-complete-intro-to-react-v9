@@ -116,3 +116,14 @@ npm install @tanstack/react-router@1.65.0
 ```
 npm install -D @tanstack/router-plugin@1.65.0 @tanstack/router-devtools@1.65.0
 ```
+
+- Install TansStack Query
+
+```
+npm i @tanstack/react-query@5.59.13
+```
+
+```
+npm i -D @tanstack/react-query-devtools@5.59.13 @tanstack/eslint-plugin-query@5.59.7
+
+```
