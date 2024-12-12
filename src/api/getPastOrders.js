@@ -1,5 +1,5 @@
 export default async function getPastOrders(page) {
-  const response = await fetch(`/api/past-orderse?page=${page}`);
+  const response = await fetch(`/api/past-orders?page=${page}`);
   if (!response.ok) {
     throw new Error(`HTTP Error: ${response.status} - ${response.statusText}`);
   }
