@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import Cart from "./Cart";
-import Pizza from "./Pizza";
+
 import useCurrencyINTL from "./useCurrencyINTL";
+import Pizza from "./Pizza";
+import Cart from "./Cart";
 
 const Order = () => {
   const currencyINTL = useCurrencyINTL();
