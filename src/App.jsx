@@ -1,11 +1,12 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Pizza from "./Pizza";
 import { useEffect, useState } from "react";
-import Order from "./Order";
-import PizzaOfTheDay from "./PizzaOfTheDay";
+import { StrictMode } from "react";
 
+import PizzaOfTheDay from "./PizzaOfTheDay";
+import { CartContext } from "./contexts";
 import Header from "./Header";
+import Pizza from "./Pizza";
+import Order from "./Order";
 
 const App = () => {
   const [pizzas, setPizzas] = useState([]);
@@ -28,14 +29,16 @@ const App = () => {
     />
   ));
 
-  // return <div className="app-container">{renderedPizaas}</div>;
+  const cartHook = useState([]);
   return (
     <StrictMode>
-      <div className="app-container">
-        <Header />
-        <Order />
-        <PizzaOfTheDay />
-      </div>
+      <CartContext.Provider value={cartHook}>
+        <div className="app-container">
+          <Header />
+          <Order />
+          <PizzaOfTheDay />
+        </div>
+      </CartContext.Provider>
     </StrictMode>
   );
 };
