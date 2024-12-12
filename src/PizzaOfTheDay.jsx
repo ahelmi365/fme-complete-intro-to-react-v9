@@ -1,5 +1,3 @@
-import React from "react";
-
 import usePizzaOfTheDay from "./usePizzaOfTheDay";
 import useCurrencyINTL from "./useCurrencyINTL";
 

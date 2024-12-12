@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import React, { useContext } from "react";
+import { useContext } from "react";
 
 import { CartContext } from "./contexts";
 

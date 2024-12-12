@@ -1,5 +1,3 @@
-import React from "react";
-
 import useCurrencyINTL from "./useCurrencyINTL";
 
 const Cart = ({ cart, checkOut }) => {
