@@ -8,7 +8,7 @@ class ErrorBoundry extends Component {
   //     this.celeprator = this.celeprator.bind(this); // or use arrow functoin
   //   }
   state = { hasError: false };
-  static getDerviedStateFromError() {
+  static getDerivedStateFromError() {
     return {
       hasError: true,
     };
@@ -26,8 +26,8 @@ class ErrorBoundry extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="error-boundry">
-          <h2>Error...</h2>
+        <div className="error-boundary">
+          <h2>Error Boundry...</h2>
           <p>
             There is an error. Please <Link to={"/"}>click here</Link> to go to
             the home page.
