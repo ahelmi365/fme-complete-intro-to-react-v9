@@ -7,6 +7,7 @@ import getPastOrder from "./api/getPastOrder";
 import Modal from "./Modal";
 
 const PastOrders = () => {
+  // throw new Error("Error from past orders!");
   const [page, setPage] = useState(1);
   const [focusedOrder, setFocusedOrder] = useState(null);
   const currencyINTL = useCurrencyINTL();
