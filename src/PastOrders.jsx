@@ -2,9 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 
 import getPastOrders from "./api/getPastOrders";
+import Modal from "./Modal";
 
 const PastOrders = () => {
   const [page, setPage] = useState(1);
+  const [showModal, setShowModal] = useState(false);
 
   const { isLoading, error, data, isError } = useQuery({
     queryKey: ["past-orders", page],
@@ -39,7 +41,11 @@ const PastOrders = () => {
         <tbody>
           {data?.map((order) => (
             <tr key={order.order_id}>
-              <td>{order.order_id}</td>
+              <td>
+                <button type="button" onClick={() => setShowModal(true)}>
+                  {order.order_id}
+                </button>
+              </td>
               <td>{order.date}</td>
               <td>{order.time}</td>
             </tr>
@@ -56,6 +62,17 @@ const PastOrders = () => {
           Next
         </button>
       </div>
+
+      {showModal && (
+        <Modal>
+          <>
+            hello from modal
+            <button type="button" onClick={() => setShowModal(false)}>
+              Close Modal
+            </button>
+          </>
+        </Modal>
+      )}
     </div>
   );
 };
