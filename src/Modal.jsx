@@ -12,6 +12,7 @@ const Modal = ({ children }) => {
     modalRoot.appendChild(elRef.current);
 
     // return TODO
+    return () => modalRoot.removeChild(elRef.current);
   }, []);
   return createPortal(<div>{children}</div>, elRef.current);
 };
