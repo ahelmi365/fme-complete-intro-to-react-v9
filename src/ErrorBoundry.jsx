@@ -2,6 +2,11 @@ import { Link } from "@tanstack/react-router";
 import { Component } from "react";
 
 class ErrorBoundry extends Component {
+  constructor(props) {
+    super(props);
+
+    this.celeprator = this.celeprator.bind(this); // or use arrow functoin
+  }
   state = { hasError: false };
   static getDerviedStateFromError() {
     return {
@@ -9,6 +14,11 @@ class ErrorBoundry extends Component {
     };
   }
 
+  celeprator() {
+    return this.setState({
+      celepration: "lol...",
+    });
+  }
   componentDidCatch(error, info) {
     console.log("Error Boundry caught error: ", error, info);
   }
