@@ -185,3 +185,5 @@ Then run:
 ```
  npm run vitest --ui
 ```
+
+- Install `vitest` vs code extension
