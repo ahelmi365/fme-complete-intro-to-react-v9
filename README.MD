@@ -128,9 +128,60 @@ npm i -D @tanstack/react-query-devtools@5.59.13 @tanstack/eslint-plugin-query@5.
 
 ```
 
-- vitest
+### vitest
 
 ```
 npm install -D vitest@2.1.3 @testing-library/react@16.0.1 happy-dom@15.7.4
 npm i -D vitest-fetch-mock@0.3.0
+```
+
+Then add this line to `vite.config.js`:
+
+```js
+test: {
+    environment: "happy-dom",
+  },
+```
+
+-- check testing coverage:
+
+```
+npm i -D @vitest/coverage-v8@2.1.3
+```
+
+Then add this line to `vite.config.js`:
+
+```js
+test: {
+    environment: "happy-dom",
+    coverage: {
+      reporter: ["text", "json", "html"], // this object
+    },
+  },
+```
+
+then go to `package.json` and add this script:
+
+```json
+"coverage": "vitest --coverage"
+```
+
+No run `npm run converage` and check the report in the terminal. Also, you will get a new folder called `coverage` added to the root folder. You can open the `/coverage/index.html` file in the browser.
+
+### Vitest UI:
+
+```
+npm i -D @vitest/ui@2.1.3
+```
+
+add this to `package.json`:
+
+```json
+ "test:ui": "vitest --ui"
+```
+
+Then run:
+
+```
+ npm run vitest --ui
 ```
