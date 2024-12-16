@@ -3,7 +3,7 @@ import useCurrencyINTL from "./useCurrencyINTL";
 const Cart = ({ cart, checkOut }) => {
   const currencyINTL = useCurrencyINTL();
   let total = 0;
-  cart.forEach((item) => {
+  cart?.forEach((item) => {
     total += item.pizza.sizes[item.size];
   });
 
