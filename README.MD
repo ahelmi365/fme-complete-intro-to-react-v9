@@ -127,3 +127,9 @@ npm i @tanstack/react-query@5.59.13
 npm i -D @tanstack/react-query-devtools@5.59.13 @tanstack/eslint-plugin-query@5.59.7
 
 ```
+
+- vitest
+
+```
+npm install -D vitest@2.1.3 @testing-library/react@16.0.1 happy-dom@15.7.4
+```
