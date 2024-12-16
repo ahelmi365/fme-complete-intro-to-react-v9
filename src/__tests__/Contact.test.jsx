@@ -8,10 +8,9 @@ import Contact from "../Contact";
 const queryClinet = new QueryClient();
 
 const fetchMocker = createFetchMock(vi);
-
 fetchMocker.enableMocks();
 
-test("cam submit contact form", async () => {
+test("can submit contact form", async () => {
   fetchMocker.mockResponse(JSON.stringify({ status: "Ok" }));
 
   const screen = render(
