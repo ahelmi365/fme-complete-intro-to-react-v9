@@ -21,6 +21,9 @@ function Index() {
         <li>
           <Link to="/about">About</Link>
         </li>
+        <li>
+          <Link to="/contact">Contact Us</Link>
+        </li>
       </ul>
     </div>
   );
