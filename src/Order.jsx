@@ -16,7 +16,8 @@ export const Order = () => {
 
   let price, selectedPizza;
 
-  if (!loading) {
+  if (!loading && pizzaType !== "-1") {
+    console.log({ pizzaType });
     selectedPizza = pizzaTypes.find((pizza) => pizza.id === pizzaType);
     price = currencyINTL.format(selectedPizza.sizes[pizzaSize]);
   }
@@ -58,10 +59,12 @@ export const Order = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            setCart([
-              ...cart,
-              { pizza: selectedPizza, size: pizzaSize, price },
-            ]);
+            if (selectedPizza !== "-1") {
+              setCart([
+                ...cart,
+                { pizza: selectedPizza, size: pizzaSize, price },
+              ]);
+            }
           }}
         >
           <div>
@@ -131,9 +134,9 @@ export const Order = () => {
             {!loading && (
               <>
                 <Pizza
-                  name={selectedPizza.name}
+                  name={selectedPizza?.name}
                   description={selectedPizza?.description}
-                  image={selectedPizza.image}
+                  image={selectedPizza?.image}
                 />
                 <p>{price}</p>
               </>
