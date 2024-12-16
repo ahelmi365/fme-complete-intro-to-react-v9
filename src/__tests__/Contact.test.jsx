@@ -19,19 +19,15 @@ test("can submit contact form", async () => {
     </QueryClientProvider>
   );
 
-  const nameInput = screen.getByPlaceholderText("Name");
-  const emailInput = screen.getByPlaceholderText("Email");
-  const messageInput = screen.getByPlaceholderText("Message");
-
   const testData = {
     name: "Ali",
     email: "ali@gmail.com",
     message: "testing message!",
   };
 
-  nameInput.value = testData.name;
-  emailInput.value = testData.email;
-  messageInput.value = testData.message;
+  screen.getByPlaceholderText("Name").value = testData.name;
+  screen.getByPlaceholderText("Email").value = testData.email;
+  screen.getByPlaceholderText("Message").value = testData.message;
 
   const submitBtn = screen.getByRole("button");
 
