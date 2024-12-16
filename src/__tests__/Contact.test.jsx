@@ -5,7 +5,7 @@ import { expect, test, vi } from "vitest";
 
 import Contact from "../Contact";
 
-const queryClinet = new QueryClient();
+const queryClient = new QueryClient();
 
 const fetchMocker = createFetchMock(vi);
 fetchMocker.enableMocks();
@@ -14,7 +14,7 @@ test("can submit contact form", async () => {
   fetchMocker.mockResponse(JSON.stringify({ status: "Ok" }));
 
   const screen = render(
-    <QueryClientProvider client={queryClinet}>
+    <QueryClientProvider client={queryClient}>
       <Contact />
     </QueryClientProvider>
   );
