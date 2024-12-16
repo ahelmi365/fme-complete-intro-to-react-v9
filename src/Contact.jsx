@@ -15,6 +15,10 @@ const Contact = () => {
     },
   });
 
+  if (mutation.isError) {
+    return <h2>{mutation.error.message}</h2>;
+  }
+
   return (
     <div className="contact">
       <h2>Contact</h2>
