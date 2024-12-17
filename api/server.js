@@ -1,8 +1,8 @@
-import fastify from "fastify";
-import fastifyStatic from "@fastify/static";
-import path from "path";
-import { fileURLToPath } from "url";
 import { AsyncDatabase } from "promised-sqlite3";
+import fastifyStatic from "@fastify/static";
+import { fileURLToPath } from "url";
+import fastify from "fastify";
+import path from "path";
 
 const server = fastify({
   logger: {
@@ -102,6 +102,8 @@ server.get("/api/pizza-of-the-day", async function getPizzaOfTheDay(req, res) {
 
 server.get("/api/orders", async function getOrders(req, res) {
   const id = req.query.id;
+  console.log(id);
+
   const orders = await db.all("SELECT order_id, date, time FROM orders");
 
   res.send(orders);
