@@ -17,7 +17,6 @@ export const Order = () => {
   let price, selectedPizza;
 
   if (!loading && pizzaType !== "-1") {
-    console.log({ pizzaType });
     selectedPizza = pizzaTypes.find((pizza) => pizza.id === pizzaType);
     price = currencyINTL.format(selectedPizza.sizes[pizzaSize]);
   }
@@ -31,6 +30,14 @@ export const Order = () => {
     setLoading(false);
   };
 
+  const addToCart = (formData) => {
+    console.log(formData.get("pizza-type"));
+    console.log(formData.get("pizza-size"));
+
+    if (selectedPizza !== "-1") {
+      setCart([...cart, { pizza: selectedPizza, size: pizzaSize, price }]);
+    }
+  };
   const checkOut = async () => {
     if (cart.length > 0) {
       setLoading(true);
@@ -56,17 +63,7 @@ export const Order = () => {
     <div className="order-page">
       <div className="order">
         <h2>Create Order</h2>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (selectedPizza !== "-1") {
-              setCart([
-                ...cart,
-                { pizza: selectedPizza, size: pizzaSize, price },
-              ]);
-            }
-          }}
-        >
+        <form action={addToCart}>
           <div>
             <div>
               <label htmlFor="pizza-type">Pizza Type</label>
