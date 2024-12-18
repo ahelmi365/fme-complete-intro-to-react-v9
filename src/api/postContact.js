@@ -1,4 +1,5 @@
 export default async function postContact(name, email, message) {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   const response = await fetch("/api/contact", {
     method: "POST",
     headers: {
