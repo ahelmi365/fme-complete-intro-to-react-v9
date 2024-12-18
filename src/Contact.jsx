@@ -27,15 +27,42 @@ const Contact = () => {
         <h3>Submitted</h3>
       ) : (
         <form action={mutation.mutate}>
-          <input type="text" name="name" placeholder="Name" />
-          <input type="email" name="email" placeholder="Email" />
-          <textarea name="message" placeholder="Message" />
+          <ContactInput
+            type="text"
+            name="name"
+            placeholder="Name"
+            isLoading={mutation.isPending}
+          />
+          <ContactInput
+            type="email"
+            name="email"
+            placeholder="Email"
+            isLoading={mutation.isPending}
+          />
+          <textarea
+            name="message"
+            placeholder="Message"
+            disabled={mutation.isPending}
+          />
 
-          <button>Submit</button>
+          <button disabled={mutation.isPending}>
+            {mutation.isPending ? "Submiting..." : "Submit"}
+          </button>
         </form>
       )}
     </div>
   );
 };
 
+const ContactInput = ({ type, name, id, placeholder, isLoading }) => {
+  return (
+    <input
+      type={type}
+      name={name}
+      id={id}
+      placeholder={placeholder}
+      disabled={isLoading}
+    />
+  );
+};
 export default Contact;
