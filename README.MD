@@ -187,3 +187,37 @@ Then run:
 ```
 
 - Install `vitest` vs code extension
+
+- install react v 19
+
+```
+npm install react@19 react-dom@19
+```
+
+- install react compiler
+
+```
+npm i -D babel-plugin-react-compiler@beta --force
+```
+
+- Configure react compiler in `vite.config.js`
+
+  ```js
+  plugins: [
+      TanStackRouterVite(),
+      react({
+        babel: {
+          plugins: [
+            [
+              "babel-plugin-react-compiler",
+              {
+                target: "19",
+              },
+            ],
+          ],
+        },
+      }),
+    ],
+  ```
+
+- Then after running the app in the brwoser, `inspect` and open the `components` react dev tool and you will find that many components are `memoized`.
