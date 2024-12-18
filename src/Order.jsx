@@ -65,6 +65,7 @@ export const Order = () => {
         <h2>Create Order</h2>
         <form action={addToCart}>
           <div>
+            {/* Pizza Type */}
             <div>
               <label htmlFor="pizza-type">Pizza Type</label>
               <select
@@ -82,6 +83,7 @@ export const Order = () => {
                 ))}
               </select>
             </div>
+            {/* Pizza size */}
             <div>
               <label htmlFor="pizza-size">Pizza Size</label>
               <div>
@@ -120,12 +122,14 @@ export const Order = () => {
                 </span>
               </div>
             </div>
+            {/* add to cart btn */}
             <div>
               <button type="submit" disabled={loading}>
                 Add to cart
               </button>
             </div>
           </div>
+          {/* Pizza Preview  */}
           <div>
             {loading && <span>Loading...</span>}
             {!loading && (
